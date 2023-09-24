@@ -1,0 +1,54 @@
+.container {
+    width: 80%;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+}
+.container td:first-child {
+    border-right: 2px solid #333; /* Adjust the color and thickness as desired */
+    padding-right: 20px; /* Give some spacing between the border and the content */
+}
+
+.container td {
+    padding: 0 20px; /* Add horizontal padding to both sides of the cells */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    width: 50%;
+    vertical-align: top;
+    padding: 15px;
+}
+
+#output {
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;  /* changed from 'end' for better readability */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007BFF; /* This gives a default blue background to the button */
+    color: white; /* White text on the button */
+}
