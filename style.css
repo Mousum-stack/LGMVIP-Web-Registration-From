@@ -1,17 +1,19 @@
 .container {
-    width: 80%;
-    margin: 50px auto;
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 2% auto;
     font-family: Arial, sans-serif;
+    box-sizing: border-box; 
 }
+
 .container td:first-child {
-    border-right: 2px solid #333; /* Adjust the color and thickness as desired */
-    padding-right: 20px; /* Give some spacing between the border and the content */
+    border-right: 2px solid #333;
+    padding-right: 15px;
 }
 
 .container td {
-    padding: 0 20px; /* Add horizontal padding to both sides of the cells */
+    padding: 0 10px;
 }
-
 
 table {
     width: 100%;
@@ -21,34 +23,48 @@ table {
 td {
     width: 50%;
     vertical-align: top;
-    padding: 15px;
+    padding: 10px 15px; 
 }
 
 #output {
-    padding: 30px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    text-align: left;  /* changed from 'end' for better readability */
+    text-align: left;
+}
+.field-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
+    display: inline-block; /* Change from block to inline-block */
+    width: 100px; /* Provide a fixed width for alignment */
+    margin-right: 10px;
+    vertical-align: top; /* To align with input fields */
 }
 
-input {
-    width: 80%;
-    padding: 8px;
-    margin-bottom: 10px;
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"] {
+    flex-grow: 1;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px; /* Space between the input and its label */
+}
+
 button {
-    padding: 8px;
+    padding: 5px 10px; /* Reduce the padding */
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #007BFF; /* This gives a default blue background to the button */
-    color: white; /* White text on the button */
+    background-color: #007BFF;
+    color: white;
 }

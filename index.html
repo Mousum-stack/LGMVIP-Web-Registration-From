@@ -1,38 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h3 style="text-align: center; font-size: 30px;">Student Enrolment Form</h3>
+
+<body style="background-color: yellow;">
+    <u>
+        <h3 style="text-align: center; font-size: 30px; background-color: aqua;">Student Enrolment Form</h3>
+    </u>
     <div class="container">
-       
+
         <table>
-            
+
             <tr>
                 <!-- Form on the left cell -->
                 <td>
                     <form id="registrationForm">
-                        <h3>Enter Your Data</h3>
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" required>
+                        <h3>Enter Your Data:</h3>
+
+                        <div class="field-group">
+                            <label for="username">Name:</label>
+                            <input type="text" id="username" required>
+                        </div>
+                                <br>
+                        <div class="field-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                            <br>
+                        <div class="field-group">
+                            <label for="rollno">Roll No:</label>
+                            <input type="number" id="rollno" required>
+                        </div>
+                            <br>
+                        <div class="field-group">
+                            <label for="userImage">Image:</label>
+                            <input type="file" id="userImage">
+                        </div>
+                                <br>
+                        <label>Gender:</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        <br><br>
+
+                        <label>Skills:</label>
+                        <input type="checkbox" id="skill1" name="skill1" value="Python">
+                        <label for="skill1">Python</label>
+                        <input type="checkbox" id="skill2" name="skill2" value="JavaScript">
+                        <label for="skill2">JavaScript</label>
+                        <input type="checkbox" id="skill3" name="skill3" value="Java">
+                        <label for="skill3">Java</label>
                         <br>
-                        <label for="email">Email:</label>
-                        <input style=" margin-top: 2%;" type="email" id="email" required>
-                        <br>
+
                         <button style="margin-top: 2%;" type="submit">Submit</button>
                     </form>
                 </td>
 
                 <!-- Output on the right cell -->
                 <td>
-                    <div id="output">
+                    <div style="border-color: rgb(2, 136, 254); border-width: thick;" id="output">
                         <h3>Submitted Data:</h3>
                         <p>Username: <span id="outputUsername"></span></p>
                         <p>Email: <span id="outputEmail"></span></p>
+                        <p>Gender: <span id="outputGender"></span></p>
+                        <p>Skills: <span id="outputSkills"></span></p>
                     </div>
                 </td>
             </tr>
@@ -46,10 +83,20 @@
 
             let username = document.getElementById('username').value;
             let email = document.getElementById('email').value;
+            let gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : 'Not specified';
+            
+            let skills = [];
+            let skillElements = document.querySelectorAll('input[type="checkbox"]:checked');
+            skillElements.forEach(element => {
+                skills.push(element.value);
+            });
 
             document.getElementById('outputUsername').textContent = username;
             document.getElementById('outputEmail').textContent = email;
+            document.getElementById('outputGender').textContent = gender;
+            document.getElementById('outputSkills').textContent = skills.join(', ');
         });
     </script>
 </body>
+
 </html>
