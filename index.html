@@ -63,39 +63,72 @@
                 </td>
 
                 <!-- Output on the right cell -->
-                <td>
-                    <div style="border-color: rgb(2, 136, 254); border-width: thick;" id="output">
-                        <h3>Submitted Data:</h3>
-                        <p>Username: <span id="outputUsername"></span></p>
-                        <p>Email: <span id="outputEmail"></span></p>
-                        <p>Gender: <span id="outputGender"></span></p>
-                        <p>Skills: <span id="outputSkills"></span></p>
-                    </div>
-                </td>
+               <!-- Output on the right cell -->
+                    <td>
+                        <div style="border-color: rgb(2, 136, 254); border-width: thick; display: flex; justify-content: space-between; align-items: flex-start;" id="output">
+                            <!-- Textual Data Section -->
+                            <div>
+                                <h3>Submitted Data:</h3>
+                                <p>Username: <span id="outputUsername"></span></p>
+                                <p>Email: <span id="outputEmail"></span></p>
+                                <p>Gender: <span id="outputGender"></span></p>
+                                <p>Skills: <span id="outputSkills"></span></p>
+                            </div>
+                            <!-- Image Section -->
+                            <div style="margin-left: 20px;">
+                                <h3 id="imageHeading" style="display: none;">IMAGE</h3>
+                                <img id="outputImage" src="" alt="Uploaded Image" style="max-width: 300px; display: none;">
+                            </div>
+                        </div>
+                    </td>
+
             </tr>
         </table>
 
     </div>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent the default form submission action
+  document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the default form submission action
 
-            let username = document.getElementById('username').value;
-            let email = document.getElementById('email').value;
-            let gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : 'Not specified';
-            
-            let skills = [];
-            let skillElements = document.querySelectorAll('input[type="checkbox"]:checked');
-            skillElements.forEach(element => {
-                skills.push(element.value);
-            });
+    let username = document.getElementById('username').value;
+    let email = document.getElementById('email').value;
+    let gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : 'Not specified';
+    
+    let skills = [];
+    let skillElements = document.querySelectorAll('input[type="checkbox"]:checked');
+    skillElements.forEach(element => {
+        skills.push(element.value);
+    });
 
-            document.getElementById('outputUsername').textContent = username;
-            document.getElementById('outputEmail').textContent = email;
-            document.getElementById('outputGender').textContent = gender;
-            document.getElementById('outputSkills').textContent = skills.join(', ');
-        });
+    document.getElementById('outputUsername').textContent = username;
+    document.getElementById('outputEmail').textContent = email;
+    document.getElementById('outputGender').textContent = gender;
+    document.getElementById('outputSkills').textContent = skills.join(', ');
+
+    // Image handling
+    let userImage = document.getElementById('userImage');
+    let outputImage = document.getElementById('outputImage');
+    let imageHeading = document.getElementById('imageHeading'); // Reference to the "IMAGE" heading
+
+    if (userImage.files && userImage.files[0]) {
+        let reader = new FileReader();
+        
+        reader.onload = function(e) {
+            outputImage.src = e.target.result;
+            outputImage.style.display = 'block'; // Display the image
+
+            imageHeading.style.display = 'block'; // Show the "IMAGE" heading
+        }
+
+        reader.readAsDataURL(userImage.files[0]); // Read the uploaded file as DataURL
+    } else {
+        outputImage.style.display = 'none'; // Hide the image if none uploaded
+        imageHeading.style.display = 'none'; // Hide the "IMAGE" heading
+    }
+});
+
+
     </script>
 </body>
 
